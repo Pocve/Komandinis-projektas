@@ -56,7 +56,7 @@
                         <div class="form-group {{ $errors->has('phone_number') ? ' has-error' : '' }}">
                             <label for="phone_number" class="col-md-4 control-label">Phone number</label>
                             <div class="col-md-6">
-                                <input id="phone_number" type="number" class="form-control" name="phone_number">
+                                <input id="phone_number" type="number" class="form-control" name="phone_number" value="{{ old('phone_number') }}">
 
                                 @if ($errors->has('phone_number'))
                                     <span class="help-block">
@@ -109,7 +109,7 @@
                         <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                             <label for="address" class="col-md-4 control-label">Address</label>
                             <div class="col-md-6">
-                                <input id="address" type="address" class="form-control" name="address">
+                                <input id="address" type="address" class="form-control" name="address" value="{{ old('address') }}">
 
                                 @if ($errors->has('address'))
                                     <span class="help-block">
@@ -121,7 +121,7 @@
                         <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
                             <label for="city" class="col-md-4 control-label">City</label>
                             <div class="col-md-6">
-                                <input id="City" type="address" class="form-control" name="city">
+                                <input id="City" type="address" class="form-control" name="city" value="{{ old('city') }}">
 
                                 @if ($errors->has('city'))
                                     <span class="help-block">
@@ -133,7 +133,7 @@
                         <div class="form-group{{ $errors->has('zip_code') ? ' has-error' : '' }}">
                             <label for="zip_code" class="col-md-4 control-label">Zip code</label>
                             <div class="col-md-6">
-                                <input id="Zip_code" type="address" class="form-control" name="zip_code">
+                                <input id="Zip_code" type="address" class="form-control" name="zip_code" value="{{ old('zip_code') }}">
 
                                 @if ($errors->has('zip_code'))
                                     <span class="help-block">

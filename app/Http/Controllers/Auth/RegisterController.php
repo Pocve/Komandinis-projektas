@@ -58,7 +58,7 @@ class RegisterController extends Controller
             'address' => 'required|string|max:255',
             'city' => 'required',
             'zip_code' => 'required|numeric',
-            'country' => 'required|in',
+            'country' => 'required',
         ]);
     }
 
@@ -72,8 +72,16 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'surname' => $data['surname'],
+            'date_of_birth' => $data['date_of_birth'],
+            'phone_number' => $data['phone_number'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'address' => $data['address'],
+            'city' => $data['city'],
+            'zip_code' => $data['zip_code'],
+            'country' => $data['country']
+
         ]);
     }
 }
