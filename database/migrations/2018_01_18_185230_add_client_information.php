@@ -14,20 +14,15 @@ class AddClientInformation extends Migration
      */
     public function up()
     {
-        Schema::table('client', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
+        Schema::table('users', function (Blueprint $table) {
             $table->string('surname');
             $table->integer('date_of_birth');
             $table->integer('phone_number');
-            $table->string('email');
-            $table->string('password');
-            $table->string('password_confirmation');
             $table->string('address');
             $table->string('city');
             $table->integer('zip_code');
             $table->string('country');
-            $table->timestamps();
+
         });
     }
 
@@ -38,8 +33,8 @@ class AddClientInformation extends Migration
      */
     public function down()
     {
-        Schema::table('client', function (Blueprint $table) {
-             $table->dropColumn(['name', 'surname', 'date_of_birth', 'phone_number', 'email', 'password', 'password_confirmation', 'address', 'city', 'zip_code', 'country']);
+        Schema::table('users', function (Blueprint $table) {
+             $table->dropColumn(['surname', 'date_of_birth', 'phone_number', 'address', 'city', 'zip_code', 'country']);
         });
     }
 }
