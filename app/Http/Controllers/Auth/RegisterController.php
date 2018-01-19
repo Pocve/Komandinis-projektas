@@ -58,7 +58,7 @@ class RegisterController extends Controller
             'address' => 'required|string|max:255',
             'city' => 'required',
             'zip_code' => 'required|numeric',
-            'country' => 'required',
+            'country' => 'in:LT,LV,ES,PO',
         ]);
     }
 
