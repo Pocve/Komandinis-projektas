@@ -30,7 +30,7 @@
                             <label for="surname" class="col-md-4 control-label">Surname</label>
 
                             <div class="col-md-6">
-                                <input id="Surname" type="text" class="form-control" name="surname" value="{{ old('surname',$user->surname) }}" autofocus>
+                                <input id="Surname" type="text" class="form-control" name="surname" value="{{ old('surname',$user->surname) }}" autofocus disabled>
 
                                 @if ($errors->has('surname'))
                                     <span class="help-block">
@@ -43,7 +43,7 @@
                         <div class="form-group {{ $errors->has('date_of_birth') ? ' has-error' : '' }}">
                             <label for="date_of_birth" class="col-md-4 control-label">Date of birth</label>
                             <div class="col-md-6">
-                                <input id="Date_of_birth" type="date" class="form-control" name="date_of_birth" value="{{ old('date_of_birth', $user->date_of_birth) }}">
+                                <input id="Date_of_birth" type="date" class="form-control" name="date_of_birth" value="{{ old('date_of_birth', $user->date_of_birth) }}" disabled >
 
                                 @if ($errors->has('date_of_birth'))
                                     <span class="help-block">
@@ -57,7 +57,7 @@
                         <div class="form-group {{ $errors->has('phone_number') ? ' has-error' : '' }}">
                             <label for="phone_number" class="col-md-4 control-label">Phone number</label>
                             <div class="col-md-6">
-                                <input id="phone_number" type="number" class="form-control" name="phone_number" value="{{ old('phone_number', $user->phone_number) }}">
+                                <input id="phone_number" type="number" class="form-control" name="phone_number" value="{{ old('phone_number', $user->phone_number) }}" disabled>
 
                                 @if ($errors->has('phone_number'))
                                     <span class="help-block">
@@ -70,7 +70,7 @@
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email', $user->email) }}">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email', $user->email) }}" disabled>
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -79,38 +79,10 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                          <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
-
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
-
-                            </div>
-                        </div>
                         <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                             <label for="address" class="col-md-4 control-label">Address</label>
                             <div class="col-md-6">
-                                <input id="address" type="address" class="form-control" name="address" value="{{ old('address',$user->adress) }}">
+                                <input id="address" type="address" class="form-control" name="address" value="{{ old('address',$user->adress) }}" disabled>
 
                                 @if ($errors->has('address'))
                                     <span class="help-block">
@@ -122,7 +94,7 @@
                         <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
                             <label for="city" class="col-md-4 control-label">City</label>
                             <div class="col-md-6">
-                                <input id="City" type="address" class="form-control" name="city" value="{{ old('city', $user->city) }}">
+                                <input id="City" type="address" class="form-control" name="city" value="{{ old('city', $user->city) }}" disabled>
 
                                 @if ($errors->has('city'))
                                     <span class="help-block">
@@ -134,7 +106,7 @@
                         <div class="form-group{{ $errors->has('zip_code') ? ' has-error' : '' }}">
                             <label for="zip_code" class="col-md-4 control-label">Zip code</label>
                             <div class="col-md-6">
-                                <input id="Zip_code" type="address" class="form-control" name="zip_code" value="{{ old('zip_code', $user->zip_code) }}">
+                                <input id="Zip_code" type="address" class="form-control" name="zip_code" value="{{ old('zip_code', $user->zip_code) }}" disabled>
 
                                 @if ($errors->has('zip_code'))
                                     <span class="help-block">
@@ -149,7 +121,7 @@
                         <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                             <label for="address-confirm" class="col-md-4 control-label">Country</label>
                             <div class="col-md-6">
-                                <select class="form-control" name="country">
+                                <select class="form-control" name="country" disabled>
                                   <option value="LT">Lithuania</option>
                                   <option value="LV">Latvia</option>
                                   <option value="PO">Poland</option>

@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,4 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/profile', 'ProfileController@show')->name('profile');
+Route::get('/profile', 'ProfileController@show')->name('profile')->middleware('auth');
+Route::get('/', 'DishesController@index')->name('index');
+Route::get('/dishes-admin', 'AdminDishesController@index')->name('dishes-admin');
+Route::get('/dishes-create', 'AdminDishesController@create')->name('dishes-create');
+Route::post('/store', 'AdminDishesController@store')->name('store');
