@@ -17,7 +17,7 @@ Back
           New Dish
           </div>
           <div class="panel-body">
-              <form class="form-horizontal" method="POST" action="{{ route('store')}}">
+              <form class="form-horizontal" method="POST" action="{{ route('store')}}" enctype="multipart/form-data">
                 {!!csrf_field() !!}
 
               <div class="form-group">
@@ -43,8 +43,8 @@ Back
                   <div class="form-group">
                       <label for="image_url" class="col-md-4 control-label">Image pic</label>
                       <div class="col-md-6">
-                          <input style="padding-top: 5px"id="image_url" type="file" class="" name="image_url" value="">
-                                                      </div>
+                          <input style="padding-top: 5px"id="image_url" type="file" class="" name="file_name" value="">
+                        </div>
                   </div>
 
                   <div class="form-group">

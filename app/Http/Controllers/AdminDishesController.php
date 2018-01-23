@@ -14,7 +14,12 @@ class AdminDishesController extends Controller
      */
     public function index()
     {
-        return view('admin.dishes-admin');
+        $dishes = Dish::all();
+        // dd($dishes);
+        return view('admin.dishes-admin', [
+          'dishes' => $dishes
+        ]);
+
     }
 
     /**
@@ -24,6 +29,8 @@ class AdminDishesController extends Controller
      */
     public function create()
     {
+
+
         return view('admin.dishes-create');
     }
 
@@ -35,8 +42,20 @@ class AdminDishesController extends Controller
      */
     public function store(Request $request)
     {
-        $post = $request->except('_token');
+
+
+        $path = $request->file('file_name')->storePublicly('public/photos');
+        $post = [
+          'file_name'=> $path,
+          'title'=>$request['title'],
+          'description'=>$request['description'],
+          'price'=>$request['price']
+        ];
         Dish::create($post);
+        $post = $request->except('_token');
+
+
+
         return redirect()->route('dishes-admin');
     }
 
