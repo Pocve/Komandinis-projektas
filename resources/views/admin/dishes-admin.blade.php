@@ -25,7 +25,23 @@
       </li>
       <li class="list-group-item">{{$dish['description']}}</li>
       <li class="list-group-item">{{$dish['price']}}</li>
+      <a
+        href="#"
+        class="btn btn-block btn-primary ">
+        Edit
+       </a>
+       <a
+         href="#"
+         class="btn btn-block btn-danger">
+         Delete
+      </a>
+      <a
+        href="#"
+        class="btn btn-block btn-success">
+        Add Cart
+      </a>
     </ul>
+
     @endforeach
 </div>
 @endsection

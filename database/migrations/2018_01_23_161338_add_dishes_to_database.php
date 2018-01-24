@@ -17,7 +17,7 @@ class AddDishesToDatabase extends Migration
           $table->increments('id');
           $table->string('title');
           $table->string('description');
-          $table->integer('price');
+          $table->string('price');
           $table->string('file_name');
           $table->timestamps();
 

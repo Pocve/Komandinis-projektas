@@ -27,7 +27,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <img class="logo" src="{{ asset('images/logo.png')}}" alt="">
+                  <a href="{{'/'}}"> <img class="logo" src="{{ asset('images/logo.png')}}" alt=""> </a>  
                 </div>
 
                     <!-- Right Side Of Navbar -->

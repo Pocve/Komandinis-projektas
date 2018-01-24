@@ -11,18 +11,29 @@ class DishSeed extends Seeder
      *
      * @return void
      */
+    protected  function upload($url){
+       $photoUrl = explode('/', $url);
+       $url = $photoUrl[2].'/'.$photoUrl[3].'/'.$photoUrl[4];
+       return $url;
+     }
+
+
     public function run()
     {
 
         $faker = Faker::create();
         $faker->name();
 
-      foreach(range(1,10) as $x) {
+      foreach(range(1,6) as $x) {
+        $url = $faker->image($dir = 'storage/app/public/photos', $width = 640, $height = 480);
+
         $dish = new Dish;
         $dish->title = $faker->name;
         $dish->price = $faker->randomNumber(3);
         $dish->description = $faker->text(50);
+        $dish->file_name = $this->upload($url);
         $dish->save();
+
       }
     }
 }
