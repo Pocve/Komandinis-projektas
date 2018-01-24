@@ -85,7 +85,10 @@ class AdminDishesController extends Controller
      */
     public function edit($id)
     {
-        //
+      $dishes = Dish::findOrFail($id);
+      return view('admin.dishes-edit', [
+        'dishes'=>$dishes
+      ]);
     }
 
     /**
@@ -97,7 +100,19 @@ class AdminDishesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $validatedData = $request->validate([
+        'file_name'=>'required',
+        'title'=>'required|min:2',
+        'description'=>'required|min:10',
+        'price'=>'required|numeric'
+      ]);
+
+
+      $dish = Dish::findOrFail($id);
+      $post=$request->except('_token');
+      $dish->update($post);
+
+      return redirect()->to('dishes-admin');
     }
 
     /**

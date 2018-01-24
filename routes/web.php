@@ -23,3 +23,6 @@ Route::get('/', 'DishesController@index')->name('index');
 Route::get('/dishes-admin', 'AdminDishesController@index')->name('dishes-admin');
 Route::get('/dishes-create', 'AdminDishesController@create')->name('dishes-create');
 Route::post('/store', 'AdminDishesController@store')->name('store');
+
+Route::get('/dishes-edit/{id}', 'AdminDishesController@edit')->name('dishes-edit');
+Route::post('/dishes-update/{id}', 'AdminDishesController@update')->name('dishes-update');

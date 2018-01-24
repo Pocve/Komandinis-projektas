@@ -17,13 +17,13 @@ Back
           New Dish
           </div>
           <div class="panel-body">
-              <form class="form-horizontal" method="POST" action="{{ route('store')}}" enctype="multipart/form-data">
+              <form class="form-horizontal" method="POST" action="{{route('dishes-update', $dishes->id)}}" enctype="multipart/form-data">
                 {!!csrf_field() !!}
 
               <div class="form-group">
                       <label for="title" class="col-md-4 control-label">Title</label>
                       <div class="col-md-6">
-                          <input id="title" type="text" class="form-control" name="title" value="{{old('title')}}">
+                          <input id="title" type="text" class="form-control" name="title" value="{{old('title', $dishes->title)}}">
                           @if ($errors->has('title'))
                             <span style="color:red;">{{$errors->first('title')}}</span><br>
                           @endif
@@ -33,7 +33,7 @@ Back
                   <div class="form-group">
                       <label for="description" class="col-md-4 control-label">Description</label>
                       <div class="col-md-6">
-                          <input id="description" type="text" class="form-control" name="description" value="{{old('description')}}">
+                          <input id="description" type="text" class="form-control" name="description" value="{{old('description', $dishes->description)}}">
                           @if ($errors->has('description'))
                             <span style="color:blue;">{{$errors->first('description')}}</span><br>
                           @endif
@@ -43,7 +43,7 @@ Back
                   <div class="form-group">
                       <label for="price" class="col-md-4 control-label">Price</label>
                       <div class="col-md-6">
-                          <input id="price" type="text" step="0.01" class="form-control" name="price" value="{{old('price')}}">
+                          <input id="price" type="text" step="0.01" class="form-control" name="price" value="{{old('price', $dishes->price)}}">
                           @if ($errors->has('price'))
                             <span style="color:green;">{{$errors->first('price')}}</span><br>
                           @endif
@@ -62,7 +62,7 @@ Back
                   <div class="form-group">
                       <div class="col-md-6 col-md-offset-4">
                           <button type="submit" class="btn btn-primary">
-                              Register
+                              Edit
                           </button>
                       </div>
                   </div>

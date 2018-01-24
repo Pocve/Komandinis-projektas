@@ -25,21 +25,23 @@
       </li>
       <li class="list-group-item">{{$dish['description']}}</li>
       <li class="list-group-item">{{$dish['price']}}</li>
-      <a
-        href="#"
-        class="btn btn-block btn-primary ">
-        Edit
+      <li class="list-group-item">
+        <a
+          href="{{route('dishes-edit', $dish->id)}}"
+          class="btn btn-primary ">
+          Edit
        </a>
-       <a
-         href="#"
-         class="btn btn-block btn-danger">
-         Delete
-      </a>
       <a
         href="#"
-        class="btn btn-block btn-success">
+        class="btn btn-success pull-right">
         Add Cart
-      </a>
+      </a></li>
+
+      <li class="list-group-item"><a
+        href="#"
+        class="btn btn-block btn-danger">
+        Delete
+     </a></li>
     </ul>
 
     @endforeach
