@@ -11,19 +11,19 @@
 |
 */
 //
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'ProfileController@show')->name('profile')->middleware('auth');
-Route::get('/', 'DishesController@index')->name('index');
+Route::get('/nav', 'DishesController@index')->name('nav');
 Route::get('/dishes-admin', 'AdminDishesController@index')->name('dishes-admin');
 Route::get('/dishes-create', 'AdminDishesController@create')->name('dishes-create');
 Route::post('/store', 'AdminDishesController@store')->name('store');
-
+Route::get('/', 'MainPage\IndexController@index')->name('index');
 Route::get('/dishes-edit/{id}', 'AdminDishesController@edit')->name('dishes-edit');
 Route::post('/dishes-update/{id}', 'AdminDishesController@update')->name('dishes-update');
 Route::get('/dishes-delete/{id}', 'AdminDishesController@destroy')->name('dishes-delete');
