@@ -26,3 +26,4 @@ Route::post('/store', 'AdminDishesController@store')->name('store');
 
 Route::get('/dishes-edit/{id}', 'AdminDishesController@edit')->name('dishes-edit');
 Route::post('/dishes-update/{id}', 'AdminDishesController@update')->name('dishes-update');
+Route::get('/dishes-delete/{id}', 'AdminDishesController@destroy')->name('dishes-delete');

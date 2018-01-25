@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Dish;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+
 
 class AdminDishesController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -108,10 +111,16 @@ class AdminDishesController extends Controller
       ]);
 
 
-      $dish = Dish::findOrFail($id);
-      $post=$request->except('_token');
-      $dish->update($post);
 
+      $path = $request->file('file_name')->storePublicly('public/photos');
+      $post = [
+        'file_name'=> $path,
+        'title'=>$request['title'],
+        'description'=>$request['description'],
+        'price'=>$request['price']
+      ];
+      $dish = Dish::findOrFail($id);
+      $dish->update($post);
       return redirect()->to('dishes-admin');
     }
 
@@ -123,6 +132,9 @@ class AdminDishesController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $dish = Dish::findOrFail($id);
+      $dish::destroy($id);
+      Storage::disk('local')->delete($dish['file_name']);
+      return redirect()->to('dishes-admin');
     }
 }

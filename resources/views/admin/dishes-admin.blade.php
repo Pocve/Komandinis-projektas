@@ -38,7 +38,7 @@
       </a></li>
 
       <li class="list-group-item"><a
-        href="#"
+        href="{{ route('dishes-delete', $dish->id)}}"
         class="btn btn-block btn-danger">
         Delete
      </a></li>
