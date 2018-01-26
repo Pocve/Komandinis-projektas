@@ -12,6 +12,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 </head>
 <body>
         <nav class="navbar navbar-default navbar-static-top">
@@ -27,7 +31,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                  <a href="{{'/nav'}}"> <img class="logo" src="{{ asset('images/logo.png')}}" alt=""> </a>  
+                  <a href="{{'/nav'}}"> <img class="logo" src="{{ asset('images/logo.png')}}" alt=""> </a>
                 </div>
 
                     <!-- Right Side Of Navbar -->
@@ -67,7 +71,7 @@
                                 </li>
                             </ul>
                         </li>
-                      <li><a href="#">Cart</a><li>
+                      <li><a href="{{route('cart-index')}}">Cart</a><li>
                     </ul>
                 </div>
             </div>

@@ -27,3 +27,6 @@ Route::get('/', 'MainPage\IndexController@index')->name('index');
 Route::get('/dishes-edit/{id}', 'AdminDishesController@edit')->name('dishes-edit');
 Route::post('/dishes-update/{id}', 'AdminDishesController@update')->name('dishes-update');
 Route::get('/dishes-delete/{id}', 'AdminDishesController@destroy')->name('dishes-delete');
+
+Route::get('/cart', 'CartController@index')->name('cart-index');
+Route::post('/cart-store', 'CartController@store')->name('cart-store');
