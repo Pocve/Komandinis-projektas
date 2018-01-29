@@ -31,13 +31,13 @@
                     </button>
 
                     <!-- Branding Image -->
-                  <a href="{{'/nav'}}"> <img class="logo" src="{{ asset('images/logo.png')}}" alt=""> </a>
+                  <a href="{{'/'}}"> <img class="logo" src="{{ asset('images/logo.png')}}" alt=""> </a>
                 </div>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                      <li><a href="#">Dishes</a><li>
-                      <li><a href="#">Contact</a><li>
+                      <li><a href="{{ route('dishes-admin')}}">Dishes</a><li>
+                      <li><a href="{{ route('contact-index')}}">Contact</a><li>
                       <li><a href="#">Reservations</a><li>
                       <li><a href="#">Orders</a><li>
                         <li class="dropdown">

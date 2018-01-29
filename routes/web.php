@@ -30,3 +30,4 @@ Route::get('/dishes-delete/{id}', 'AdminDishesController@destroy')->name('dishes
 
 Route::get('/cart', 'CartController@index')->name('cart-index');
 Route::post('/cart-store', 'CartController@store')->name('cart-store');
+Route::get('/contact', 'ContactController@index')->name('contact-index');
