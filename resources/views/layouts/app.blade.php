@@ -71,7 +71,11 @@
                                 </li>
                             </ul>
                         </li>
-                      <li><a href="{{route('cart-index')}}">Cart</a><li>
+                      <li><a href="{{route('cart-index')}}">Cart
+                        (<span class="cart-size">{{ $cartSize }}</span>) -
+                        <span class="cart-total">{{ $cartTotal }}</span>
+                        <span>$</span>
+                      </a><li>
                     </ul>
                 </div>
             </div>

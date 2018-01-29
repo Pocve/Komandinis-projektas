@@ -67,16 +67,15 @@ $(document).ready(function(){
         var parsed = JSON.parse(data);
         console.log(parsed);
 
-        var cartTotal = $('#cart .cart-total'),
-                        cartSize = $('#cart .cart-size'),
+        var cartTotal = $('.cart-total'),
+                        cartSize = $('.cart-size'),
                         currentPrice = cartTotal.text(),
                         currentSize = cartSize.text(),
-                        totalPrice = (currentPrice*1) + data.price,
+                        totalPrice = (currentPrice*1) + (parsed.price*1),
                         totalSize = (currentSize*1) + 1;
 
                         cartTotal.text(totalPrice.toFixed(2));
                         cartSize.text(totalSize);
-
 
       },
       error: function(msg){
