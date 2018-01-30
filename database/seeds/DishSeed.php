@@ -22,10 +22,11 @@ class DishSeed extends Seeder
     {
 
         $faker = Faker::create();
+
         $faker->name();
 
       foreach(range(1,6) as $x) {
-        $url = $faker->image($dir = 'storage/app/public/photos', $width = 640, $height = 480);
+        $url = $faker->image($dir = 'storage/app/public/photos', $width = 640, $height = 480, 'food');
 
         $dish = new Dish;
         $dish->title = $faker->name;
@@ -33,7 +34,7 @@ class DishSeed extends Seeder
         $dish->description = $faker->text(50);
         $dish->file_name = $this->upload($url);
         $dish->save();
-
+ // sudo dpkg -i virtualboxo failas
       }
     }
 }

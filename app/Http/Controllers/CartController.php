@@ -15,10 +15,10 @@ class CartController extends Controller
      */
     public function index()
     {
-      $carts = Cart::all();
-      // dd($dishes);
+
+      $cart = Cart::where('token', csrf_token())->get();
       return view('cart/cart', [
-        'carts' => $carts
+        'cart' => $cart
       ]);
     }
 
@@ -64,7 +64,10 @@ class CartController extends Controller
      */
     public function show($id)
     {
-        //
+        $dishes = Cart::where('token', csrf_token())->get();
+        return view('cart/cart', [
+          'dishes' => $dishes
+        ]);
     }
 
     /**
