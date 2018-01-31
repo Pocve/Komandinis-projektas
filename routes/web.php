@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'ProfileController@show')->name('profile')->middleware('auth');
 Route::get('/nav', 'DishesController@index')->name('nav');
-Route::get('/dishes-admin', 'AdminDishesController@index')->name('dishes-admin');
+Route::get('/dishes', 'AdminDishesController@index')->name('dishes-admin');
 Route::get('/dishes-create', 'AdminDishesController@create')->name('dishes-create');
 Route::post('/store', 'AdminDishesController@store')->name('store');
 Route::get('/', 'MainPage\IndexController@index')->name('index');

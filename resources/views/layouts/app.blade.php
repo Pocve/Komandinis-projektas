@@ -38,39 +38,57 @@
                     <ul class="nav navbar-nav navbar-right">
                       <li><a href="{{ route('dishes-admin')}}">Dishes</a><li>
                       <li><a href="{{ route('contact-index')}}">Contact</a><li>
-                      <li><a href="#">Reservations</a><li>
-                      <li><a href="#">Orders</a><li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                              Admin
-                                <span class="caret"></span>
-                            </a>
+                        @if (Auth::check())
+                          <li><a href="#">Reservations</a><li>
+                          <li><a href="#">Orders</a><li>
+                            <li class="dropdown">
 
-                            <ul class="dropdown-menu">
-                                <li>
-                                  <a href="#"
-                                      onclick="event.preventDefault();
-                                               document.getElementById('logout-form').submit();">
-                                      Users
+                              @if (Auth::check())
+                                @if (Auth::user()->isAdmin())
+
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                  Admin
+                                    <span class="caret"></span>
+                                </a>
+                                @elseif (Auth::user())
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    {{Auth::user()->name}}
+                                      <span class="caret"></span>
                                   </a>
-                                  <a href="#"
-                                      onclick="event.preventDefault();
-                                               document.getElementById('logout-form').submit();">
-                                      Profile
-                                  </a>
-                                    <a href="#"
-                                        onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
+                                @endif
+                              @endif
 
 
-                                    <form id="logout-form" action="" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                      <a href="#"
+                                          onclick="event.preventDefault();
+                                                   document.getElementById('logout-form').submit();">
+                                          Users
+                                      </a>
+                                      <a href="#"
+                                          onclick="event.preventDefault();
+                                                   document.getElementById('logout-form').submit();">
+                                          Profile
+                                      </a>
+                                        <a href="#"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+
+                                        <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                            @else
+                              <li><a href="{{route('login')}}">Login</a><li>
+                              <li><a href="{{route('register')}}">Register</a><li>
+                        @endif
+
                       <li><a href="{{route('cart-index')}}">Cart
                         (<span class="cart-size">{{ $cartSize }}</span>) -
                         <span class="cart-total">{{ $cartTotal }}</span>

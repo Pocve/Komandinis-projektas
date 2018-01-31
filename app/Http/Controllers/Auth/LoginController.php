@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use App\Users;
 class LoginController extends Controller
 {
     /*
@@ -43,5 +43,15 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
     }
+    protected  function authCheck(){
+      if (Auth::check()) {
+        return view('dishes-admin');
+      }else {
+        return view('auth.register');
+      }
+
+      
+    }
+
 
 }

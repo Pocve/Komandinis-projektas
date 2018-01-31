@@ -24,25 +24,34 @@
         </a>
       </li>
       <li class="list-group-item">{{$dish['description']}}</li>
-      <li class="list-group-item">{{$dish['price']}}</li>
-      <li class="list-group-item">
+      <li class="list-group-item">Price: {{$dish['price']}}$</li>
+
+
+      @if (Auth::check())
+        @if (Auth::user()->isAdmin())
+      <li class="list-group-item clearfix">
         <a
           href="{{route('dishes-edit', $dish->id)}}"
           class="btn btn-primary pull-left">
           Edit
        </a>
 
-        <form class="pull-right" action="{{route('cart-store')}}" method="post">
-          {{ csrf_field() }}
-          <input type="hidden" name="dishes_id" value="{{$dish->id}}">
-          <button type="submit" name="button" class="btn btn-success js-cart">Add Cart</button>
-        </form>
-
         <a
           href="{{ route('dishes-delete', $dish->id)}}"
-          class="btn btn-block  btn-danger">
+          class="btn pull-right btn-danger">
           Delete
        </a>
+
+       @endif
+      @endif
+       </li>
+
+       <li class="list-group-item">
+         <form class="" action="{{route('cart-store')}}" method="post">
+           {{ csrf_field() }}
+           <input type="hidden" name="dishes_id" value="{{$dish->id}}">
+           <button type="submit" name="button" class="btn btn-success btn-block js-cart">Add Cart</button>
+         </form>
        </li>
 
     </ul>

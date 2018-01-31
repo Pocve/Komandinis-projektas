@@ -17,6 +17,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'surname','date_of_birth','phone_number','email', 'password', 'address', 'city', 'zip_code', 'country'
     ];
+    protected $attributes = [ //jei ne adminas registruojasi reik kad is admin 0 butu
+      'is_admin' => 0
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -26,4 +29,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function isAdmin(){
+      if ($this->is_admin == 1) {
+        return true;
+      }else{
+        return false;
+      }
+    }
 }
