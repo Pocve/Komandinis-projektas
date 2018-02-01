@@ -101,7 +101,10 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cart = Cart::findOrFail($id);
+        $cart::destroy($id);
+        // Storage::disk('local')->delete($cart['file_name']);
+        return redirect()->to('cart');
     }
 
 }

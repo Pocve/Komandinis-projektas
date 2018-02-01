@@ -24,15 +24,11 @@
             <span>Price:</span><p class="label label-success">{{$value->dishes->price}}$</p>
           </div>
           <div class="col-md-1">
-            <form method="POST" action="http://pro.viktoraslava.lt/cart/88">
+            <form method="POST" action="{{ route('cart-destroy', $value->id)}}">
+              {{ csrf_field() }}
+              {{ method_field('delete')}}
+              <button type="submit" class="btn btn-danger btn-block" name="button">DROP</button>
 
-              <!--<input type="hidden" name="_method" value="DELETE">-->
-
-              <input type="hidden" name="_method" value="DELETE">
-
-              <input type="hidden" name="_token" value="OZAZJvBMibRWOxMYQGfvIiuntn6p0uov2ZC2oI5E">
-
-              <button class="btn btn-danger btn-block">DROP</button>
             </form>
             <!--
             <button class="btn btn-danger">Delete</button>-->
