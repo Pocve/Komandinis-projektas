@@ -135,6 +135,6 @@ class AdminDishesController extends Controller
       $dish = Dish::findOrFail($id);
       $dish::destroy($id);
       Storage::disk('local')->delete($dish['file_name']);
-      return redirect()->to('dishes-admin');
+      return redirect()->to('dishes');
     }
 }
