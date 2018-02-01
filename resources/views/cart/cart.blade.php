@@ -44,17 +44,17 @@
     <hr>
       <h2>
         Sub-total:
-        <p class="label label-danger pull-right">8.26 $</p>
+        <p class="label label-danger pull-right">{{ $subTotal}}</p>
       </h2>
 
       <h2>
         VAT:
-        <p class="label label-warning pull-right"> 1.74 $</p>
+        <p class="label label-warning pull-right"> {{ $vatTotal }} $</p>
       </h2>
 
       <h2>
         <strong>Total:</strong>
-        <p class="label label-success pull-right"> 10.00 $</p>
+        <p class="label label-success pull-right">{{ $cartTotal }} $</p>
       </h2>
 
 

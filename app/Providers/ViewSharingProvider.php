@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use App\Cart;
+use App\Helpers\CartHelper;
 
 class ViewSharingProvider extends ServiceProvider
 {
@@ -19,17 +20,17 @@ class ViewSharingProvider extends ServiceProvider
     {
       View::composer('*', function ($view){
 
-        // dd(csrf_token());
-                  $dishes = Cart::where('token', csrf_token())->get();
-                  $counter = 0;
-                  foreach ($dishes as $key => $value) {
-                    $price = $value->dishes->price;
-                    $counter += $price;
-                  }
+        $cartHelper = new CartHelper;
+        // $cartHelper->cartCounter();
 
-                  $view->with('cartSize', count($dishes));
-                  $view->with('cartTotal', $counter);
-              });
+        $view->with('cartSize', $cartHelper->getCount());
+
+        $view->with('cartTotal', $cartHelper->getTotal());
+
+        $view->with('subTotal', $cartHelper->subTotal());
+
+        $view->with('vatTotal', $cartHelper->vatTotal());
+      });
 
     }
 

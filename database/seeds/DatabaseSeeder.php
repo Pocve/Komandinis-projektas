@@ -13,6 +13,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(DishSeed::class);
-        $this->call(AdminSeed::class);
+        $this->call(AdminSeeder::class);
     }
 }
