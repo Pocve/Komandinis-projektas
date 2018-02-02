@@ -30,7 +30,7 @@ class DishSeed extends Seeder
 
         $dish = new Dish;
         $dish->title = $faker->name;
-        $dish->price = $faker->randomNumber(3);
+        $dish->price = $faker->numberBetween(5,50);
         $dish->description = $faker->text(50);
         $dish->file_name = $this->upload($url);
         $dish->save();

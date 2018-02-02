@@ -32,3 +32,5 @@ Route::get('/cart', 'CartController@index')->name('cart-index');
 Route::post('/cart-store', 'CartController@store')->name('cart-store');
 Route::get('/contact', 'ContactController@index')->name('contact-index');
 Route::delete('/cart-delete/{id}', 'CartController@destroy')->name('cart-destroy');
+
+Route::post('/order-cart', 'OrderController@store')->name('order-cart');

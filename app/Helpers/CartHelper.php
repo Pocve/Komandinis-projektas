@@ -8,7 +8,7 @@ class CartHelper
 
   public function getCount()
   {
-    $dishes = Cart::where('token', csrf_token())->get();
+    $dishes = Cart::where('token', csrf_token())->whereNull('order_id')->get(); //paima is carto tik tuos elementus kuriu order id yra NULL
     return count($dishes);
 
     $counter = 0;
@@ -22,7 +22,7 @@ class CartHelper
 
   public function getTotal()
   {
-    $dishes = Cart::where('token', csrf_token())->get();
+    $dishes = Cart::where('token', csrf_token())->whereNull('order_id')->get();
 
     $counter = 0;
     foreach ($dishes as $key => $value) {

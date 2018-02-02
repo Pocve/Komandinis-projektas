@@ -2,15 +2,15 @@
 @section('content')
   <div class="container">
 
+
     <div class="row">
       <h1>
         Cart ({{ $cartSize }})
       </h1>
-      {{-- @if(count($dish) > 0)
-      <div> whatever your message is like shopping cart is empty </div>
-    @else --}}
-
+      <hr>
+  @if ($cartSize>0)
     @foreach($cart as $value)
+    {{-- {{dd($value)}} --}}
       <ul class="list-group" style="padding-left: 15px; padding-top: 30px;">
         <li class="list-group-item list-group-item-success col-md-12">{{$value->dishes->title}}
         </li>
@@ -36,11 +36,11 @@
         </li>
       </ul>
     @endforeach
-    {{-- @endif --}}
+
     <hr>
       <h2>
         Sub-total:
-        <p class="label label-danger pull-right">{{ $subTotal}}</p>
+        <p class="label label-danger pull-right">{{ $subTotal}} $</p>
       </h2>
 
       <h2>
@@ -52,21 +52,26 @@
         <strong>Total:</strong>
         <p class="label label-success pull-right">{{ $cartTotal }} $</p>
       </h2>
+    @else
+      <h2> Your Cart is empty. </h2>
+  @endif
 
 
-      <form class="form-horizontal" method="POST" action="http://pro.viktoraslava.lt/order">
-
-        <input type="hidden" name="_token" value="OZAZJvBMibRWOxMYQGfvIiuntn6p0uov2ZC2oI5E">
-
-        <input type="hidden" name="user_id" value="1">
-
-        <input type="hidden" name="total_amount" value="10.00">
-
-        <input type="hidden" name="tax_amount" value="1.74">
-
-        <button class="btn btn-lg btn-success btn-block">Checkout</button>
+      <form class="form-horizontal" method="POST" action="{{route('order-cart')}}">
+        
+        {{-- {{dd($value->dishes_id)}} --}}
+        {{csrf_field()}}
+        <button class="btn btn-lg btn-success btn-block">
+          @if ($cartSize>0)
+            Checkout
+          @else
+            Add something
+          @endif
+        </button>
 
       </form>
+
+
   </div>
 
 @endsection
