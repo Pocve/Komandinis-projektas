@@ -10,7 +10,13 @@ class Order extends Model
   protected $table = 'order';
 
 
-  public function orders(){
-    return $this->belongsTo('App\Cart');
+  public function carts(){
+    return $this->hasMany('App\Cart');
+  }
+  public function user(){
+    return $this->belongsTo('App\User', 'users_id');
+  }
+  public function dishes(){
+    return $this->hasManyThrough('App\Cart', 'App\Dish');
   }
 }

@@ -16,7 +16,7 @@ class CartController extends Controller
     public function index()
     {
 
-      $cart = Cart::where('token', csrf_token())->get();
+      $cart = Cart::where('token', csrf_token())->whereNull('order_id')->get();
       return view('cart/cart', [
         'cart' => $cart
       ]);
@@ -64,7 +64,7 @@ class CartController extends Controller
      */
     public function show($id)
     {
-        $dishes = Cart::where('token', csrf_token())->get();
+        $dishes = Cart::where('token', csrf_token())->whereNull('order_id')->get();
         return view('cart/cart', [
           'dishes' => $dishes
         ]);
@@ -103,7 +103,6 @@ class CartController extends Controller
     {
         $cart = Cart::findOrFail($id);
         $cart::destroy($id);
-        // Storage::disk('local')->delete($cart['file_name']);
         return redirect()->to('cart');
     }
 

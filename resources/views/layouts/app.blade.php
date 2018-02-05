@@ -40,7 +40,7 @@
                       <li><a href="{{ route('contact-index')}}">Contact</a><li>
                         @if (Auth::check())
                           <li><a href="#">Reservations</a><li>
-                          <li><a href="#">Orders</a><li>
+                          <li><a href="{{ route('order')}}">Orders</a><li>
                             <li class="dropdown">
 
                               @if (Auth::check())

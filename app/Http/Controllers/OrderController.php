@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use Auth;
 use App\Order;
+use App\Dish;
 use App\Cart;
+Use App\User;
 use Illuminate\Http\Request;
 use App\Helpers\CartHelper;
 
@@ -16,7 +18,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::all();
+        return view('order', [
+          'orders' => $orders
+        ]);
+
     }
 
     /**
@@ -51,7 +57,7 @@ class OrderController extends Controller
         'total_amount'=>$getTotal
       ];
 
-      $dishes = Cart::where('token', csrf_token())->get();
+      $dishes = Cart::where('token', csrf_token())->whereNull('order_id')->get();
       $order = Order::create($post);
       foreach ($dishes as $cart) {
         $cart->order_id = $order->id;
