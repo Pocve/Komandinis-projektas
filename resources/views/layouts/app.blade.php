@@ -61,21 +61,21 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
-                                      <a href="#"
-                                          onclick="event.preventDefault();
-                                                   document.getElementById('logout-form').submit();">
+                                  @if (Auth::check())
+                                    @if (Auth::user()->isAdmin())
+                                      <a href="{{route('users-index')}}">
                                           Users
                                       </a>
-                                      <a href="#"
-                                          onclick="event.preventDefault();
-                                                   document.getElementById('logout-form').submit();">
+                                    @endif
+                                  @endif
+                                      <a href="{{route('profile')}}">
                                           Profile
                                       </a>
-                                        <a href="#"
+                                      <a href="#"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
-                                        </a>
+                                      </a>
 
 
                                         <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
