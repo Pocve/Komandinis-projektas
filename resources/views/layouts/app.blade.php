@@ -39,7 +39,7 @@
                       <li><a href="{{ route('dishes-admin')}}">Dishes</a><li>
                       <li><a href="{{ route('contact-index')}}">Contact</a><li>
                         @if (Auth::check())
-                          <li><a href="#">Reservations</a><li>
+                          <li><a href="{{route('reservations-index')}}">Reservations</a><li>
                           <li><a href="{{ route('order')}}">Orders</a><li>
                             <li class="dropdown">
 
@@ -52,7 +52,7 @@
                                 </a>
                                 @elseif (Auth::user())
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{Auth::user()->name}}
+                                    {{ ucfirst(Auth::user()->name) }}
                                       <span class="caret"></span>
                                   </a>
                                 @endif

@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use Auth;
-use App;
-use Illuminate\Support\Facades\Validator;
-class UserController extends Controller
+
+class ReservationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        // dd($users);
-        return view('users', [
-          'users' => $users
-        ]);
+        return view('reservation.reservation');
     }
 
     /**
@@ -86,16 +79,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-
-
-        $user = User::findOrFail($id);
-        // dd($user);
-        if ($user->is_admin == 1) {
-          abort(404);
-        }else {
-          $user::destroy($id);
-          return redirect()->back();
-        }
-
+        //
     }
 }

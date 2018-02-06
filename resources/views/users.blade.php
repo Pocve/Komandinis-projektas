@@ -25,40 +25,54 @@
         </thead>
         <tbody>
           @foreach ($users as $user)
-          <tr>
+            <tr>
 
               <th scope="row">{{ $user->id }}</th>
 
               <td>
-                  <span>{{ $user->name}}</span>
+                <span>{{ $user->name}}</span>
               </td>
               <td>
-                  <span>{{ $user->surname}}</span>
+                <span>{{ $user->surname}}</span>
               </td>
               <td>
-                  <span>{{ $user->email}}</span>
+                <span>{{ $user->email}}</span>
               </td>
               <td>
-                  <span>{{ $user->phone_number}}</span>
+                <span>{{ $user->phone_number}}</span>
               </td>
               <td>
-                  <span>{{ $user->country}}</span>
+                <span>{{ $user->country}}</span>
               </td>
               <td>
-                  <span>{{ $user->city}}</span>
+                <span>{{ $user->city}}</span>
               </td>
 
               <td>
-            @if ($user->is_admin == 1)
-              <span>{{ 'Admin' }}</span>
-              @else
-                <span> {{ 'User' }}</span>
-            @endif
+                @if ($user->is_admin == 1)
+                  <span>{{ 'Admin' }}</span>
+                @else
+                  <span> {{ 'User' }}</span>
+                @endif
               </td>
-              <td>
-                <button type="submit" name="button" class="btn btn-xs btn-danger">DROP</button>
-              </td>
-          </tr>
+
+
+              <form class="" action="{{route('users-destroy', $user->id)}}" method="POST">
+                {!!csrf_field()!!}
+                {!!method_field('delete')!!}
+                <td>
+
+                  @if ($user->is_admin == 1)
+                    <button name="button" class="btn btn-xs btn-danger">DROP</button>
+                  @else
+
+                    <button type="submit" class="btn btn-xs btn-success">DROP</a>
+                  @endif
+                </td>
+              </form>
+
+
+            </tr>
           @endforeach
         </div>
 
@@ -69,4 +83,4 @@
 
 
 
-@endsection
+      @endsection

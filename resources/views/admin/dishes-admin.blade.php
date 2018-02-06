@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+  @if (Auth::check())
+    @if (Auth::user()->isAdmin())
     <div class="row">
         <div class="col-md-12" style="padding-left:0;">
              <a
@@ -10,7 +12,9 @@
           	</a>
           </div>
     </div>
-    <br><br>
+  @endif
+ @endif
+    <br>
 
 
 
