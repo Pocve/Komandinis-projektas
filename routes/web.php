@@ -40,3 +40,5 @@ Route::get('/users', 'UserController@index')->name('users-index');
 Route::delete('/users-destroy/{id}', 'UserController@destroy')->name('users-destroy');
 
 Route::get('/reservations', 'ReservationController@index')->name('reservations-index');
+Route::get('/create-reservation', 'ReservationController@create')->name('create-reservation');
+Route::post('/store-reservation', 'ReservationController@store')->name('store-reservation');

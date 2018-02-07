@@ -49,7 +49,7 @@ class CartController extends Controller
         $cart = Cart::create($post);
         $dish = Dish::where('id', $request['dishes_id'])->first();
 
-        $cart->price = $dish->price;
+        $cart->price = $dish->price; // REMEMBER
 
         echo json_encode($cart);
         //

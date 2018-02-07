@@ -63,7 +63,7 @@
                 <td>
 
                   @if ($user->is_admin == 1)
-                    <button name="button" class="btn btn-xs btn-danger">DROP</button>
+                    <button name="button" class="btn btn-xs btn-danger" disabled>Undeletable</button>
                   @else
 
                     <button type="submit" class="btn btn-xs btn-success">DROP</a>

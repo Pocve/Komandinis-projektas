@@ -2,18 +2,23 @@
 @section('content')
 <div class="container">
   @if (Auth::check())
-    @if (Auth::user()->isAdmin())
-    <div class="row">
-        <div class="col-md-12" style="padding-left:0;">
-             <a
-          	   href="{{ route('dishes-create')}}"
-          	   class="btn btn-lg btn-block btn-success">
-          	   Create new dishes
-          	</a>
-          </div>
-    </div>
-  @endif
+    <h2 class="text-center">Menu</h2>
+  @elseif (!Auth::check())
+    <h2 class="text-center">Please sign in</h2>
+
+  @elseif  (Auth::user()->isAdmin())
+        <div class="row">
+            <div class="col-md-12" style="padding-left:0;">
+                 <a
+              	   href="{{ route('dishes-create')}}"
+              	   class="btn btn-lg btn-block btn-success">
+              	   Create new dishes
+              	</a>
+              </div>
+        </div>
+
  @endif
+
     <br>
 
 
@@ -49,15 +54,18 @@
        @endif
       @endif
        </li>
-
+       @if (Auth::check())
        <li class="list-group-item">
          <form class="" action="{{route('cart-store')}}" method="post">
            {{ csrf_field() }}
            <input type="hidden" name="dishes_id" value="{{$dish->id}}">
-           <button type="submit" name="button" class="btn btn-success btn-block js-cart">Add Cart</button>
+
+             <button type="submit" name="button" class="btn btn-success btn-block js-cart">Add Cart</button>
+           @else
+
          </form>
        </li>
-
+       @endif
     </ul>
 
     @endforeach
