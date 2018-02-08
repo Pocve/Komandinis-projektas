@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-  @if (Auth::check())
+  <h2 class="text-center">Dish total: ({{$dishes->total()}})</h2>
+  @if (Auth::user()->is_admin == 0)
     <h2 class="text-center">Menu</h2>
   @elseif (!Auth::check())
     <h2 class="text-center">Please sign in</h2>
@@ -69,6 +70,9 @@
     </ul>
 
     @endforeach
+
+    <center>{{$dishes->links()}}</center>
+
 </div>
 <script type="text/javascript">
 

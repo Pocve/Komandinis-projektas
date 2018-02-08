@@ -30,12 +30,12 @@
             <th>Reserved</th>
             <th>Created</th>
             <th>User</th>
+            <th>Action</th>
           </tr>
         </thead>
-        <tbody>
           @foreach ($reservations as $reservation)
-          <tr>
 
+          <tr>
             <th scope="row">{{$reservation->id}}</th>
             <td>{{$reservation->name}}</td>
             <td>{{$reservation->phone}}</td>
@@ -47,7 +47,26 @@
               {{$reservation->created_at}}
             </td>
             <td>{{$reservation->user}}</td>
+              <td>
+                {{-- {{dd($reservation->user)}}
+                {{dd(Auth::user())}} --}}
+              @if ($reservation->user == Auth::user()->name)
+                <a href="{{route('edit-reservations', $reservation->id)}}" class="btn btn-primary btn-xs">Edit</a>
+                @else
+                <a href="{{route('edit-reservations', $reservation->id)}}" class="btn btn-danger btn-xs" disabled>Edit</a>
+              @endif
 
+
+                @if (Auth::user()->isAdmin())
+                  <form class="" action="{{route('destroy-reservations', $reservation->id)}}" method="post" style="display: inline-block;">
+                    {{ csrf_field() }}
+                    {{ method_field('delete') }}
+                      <button type="submit" name="button" class="btn btn-danger btn-xs" >Drop</button>
+                  </form>
+                @endif
+
+
+              </td>
           </tr>
           @endforeach
 
@@ -57,6 +76,7 @@
     </div>
   </div>
 </div>
+<center> {{$reservations->links()}} </center>
 </div>
 
 

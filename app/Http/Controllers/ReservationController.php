@@ -15,7 +15,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $reservations = Reservation::all();
+        $reservations = Reservation::paginate(30);
         return view('reservation.reservation', [
           'reservations' => $reservations
         ]);
@@ -81,7 +81,10 @@ class ReservationController extends Controller
      */
     public function edit($id)
     {
-        //
+      $reservations = Reservation::findOrFail($id);
+      return view('reservation.edit', [
+        'reservations'=>$reservations
+      ]);
     }
 
     /**
@@ -93,7 +96,26 @@ class ReservationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $validatedData = $request->validate([
+        'name'=>'required|min:5',
+        'phone'=>'required|min:9',
+        'people_amount'=>'required|numeric',
+        'date'=>'required|date_format:Y-m-d'
+      ]);
+
+      // var_dump($reservations);
+      $post = [
+        'users_id' => auth()->id(),
+        'user'=> auth()->user()->name,
+        'name'=>$request['name'],
+        'phone'=>$request['phone'],
+        'people_amount'=>$request['people_amount'],
+        'date'=>$request['date']
+      ];
+      $reservations = Reservation::findOrFail($id);
+      $reservations->update($post);
+
+      return redirect()->route('reservations-index');
     }
 
     /**
@@ -104,6 +126,8 @@ class ReservationController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $reservations = Reservation::findOrFail($id);
+      $reservations::destroy($id);
+      return redirect()->to('reservations');
     }
 }

@@ -10,6 +10,7 @@
     <hr>
     <div class="panel panel-default">
       <table class="table">
+        <tbody>
         <thead>
           <tr>
             <th>#</th>
@@ -23,7 +24,10 @@
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>
+
+        </div>
+
+
           @foreach ($users as $user)
             <tr>
 
@@ -67,14 +71,21 @@
                   @else
 
                     <button type="submit" class="btn btn-xs btn-success">DROP</a>
-                  @endif
-                </td>
-              </form>
+                    @endif
+                  </td>
+                </form>
 
 
-            </tr>
+              </tr>
+
           @endforeach
+          </table>
+        </tbody>
+
         </div>
+        <center>  {{$users->links()}} </center>
+
+
 
 
 

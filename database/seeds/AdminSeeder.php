@@ -16,7 +16,7 @@ class AdminSeeder extends Seeder
           $faker = Faker::create();
           $faker->name();
 
-        foreach(range(1,1) as $x) {
+        foreach(range(1,60) as $x) {
 
           $users = new User;
           $users->is_admin = 1;

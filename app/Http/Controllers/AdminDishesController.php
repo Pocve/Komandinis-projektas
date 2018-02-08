@@ -18,7 +18,7 @@ class AdminDishesController extends Controller
      */
     public function index()
     {
-        $dishes = Dish::all();
+        $dishes = Dish::paginate(6);
         // dd($dishes);
         return view('admin.dishes-admin', [
           'dishes' => $dishes
