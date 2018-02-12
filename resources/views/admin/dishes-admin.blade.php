@@ -2,11 +2,10 @@
 @section('content')
 <div class="container">
   <h2 class="text-center">Dish total: ({{$dishes->total()}})</h2>
-  @if (Auth::user()->is_admin == 0)
+  @if (Auth::check() && !Auth::user()->isAdmin())
     <h2 class="text-center">Menu</h2>
   @elseif (!Auth::check())
     <h2 class="text-center">Please sign in</h2>
-
   @elseif  (Auth::user()->isAdmin())
         <div class="row">
             <div class="col-md-12" style="padding-left:0;">

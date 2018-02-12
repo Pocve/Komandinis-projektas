@@ -17,15 +17,21 @@ class ReservationsSeeder extends Seeder
 
     $faker = Faker::create();
     $faker->name();
+    $users = User::all();
 
-    foreach(range(1,60) as $x) {
+    foreach($users as $user) {
 
       $reservations = new Reservation;
       $reservations->name = $faker->name;
       $reservations->phone = $faker->randomNumber;
 
+
+
       //$reservations->users_id = $reservations->users->id; // turi daug ju
-      $reservations->users_id = 1;
+
+
+
+      $reservations->users_id = $user->id;
       $reservations->date = $faker->dateTime();
       $reservations->people_amount = $faker->numberBetween(1,6);
       $reservations->created_at = $faker->dateTime();
