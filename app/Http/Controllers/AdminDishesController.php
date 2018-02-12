@@ -18,6 +18,7 @@ class AdminDishesController extends Controller
      */
     public function index()
     {
+
         $dishes = Dish::paginate(6);
         // dd($dishes);
         return view('admin.dishes-admin', [
@@ -47,6 +48,9 @@ class AdminDishesController extends Controller
      */
     public function store(Request $request)
     {
+      $session = $request->session();
+      $status = $session->flash('status', 'You created a new dish');
+      
       $validatedData = $request->validate([
         'file_name'=>'required',
         'title'=>'required|min:2',

@@ -44,7 +44,7 @@ class ReservationController extends Controller
         'name'=>'required|min:5',
         'phone'=>'required|min:9',
         'people_amount'=>'required|numeric',
-        'date'=>'required|date_format:Y-m-d'
+        'date'=>'required|date_format:Y-m-d|after:yesterday'
       ]);
       // var_dump($reservations);
       $post = [
