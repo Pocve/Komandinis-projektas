@@ -1,15 +1,15 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-
-  <h2 class="text-center">Dish total: ({{$dishes->total()}})</h2>
+  <div class="row">
+      <div class="col-md-12" style="padding-left:0;">
+  <h2 class="text-center alert alert-info alert-dismissable fade in">Dish total: ({{$dishes->total()}})</h2>
   @if (Auth::check() && !Auth::user()->isAdmin())
     <h2 class="text-center">Menu</h2>
   @elseif (!Auth::check())
-    <h2 class="text-center">Please sign in</h2>
+    <h3 class="text-center">Please sign in</h3>
   @elseif  (Auth::user()->isAdmin())
-        <div class="row">
-            <div class="col-md-12" style="padding-left:0;">
+
                  <a
               	   href="{{ route('dishes-create')}}"
               	   class="btn btn-lg btn-block btn-success">
