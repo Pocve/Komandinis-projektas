@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-  <div class="container">
+
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
@@ -31,7 +31,7 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-
+  <div class="container">
     @foreach ($dishes as $dish)
       <ul class="list-group col-md-4" style="padding-left: 15px; padding-top: 30px">
         <li class="list-group-item list-group-item-successs">{{$dish['title']}}</li>

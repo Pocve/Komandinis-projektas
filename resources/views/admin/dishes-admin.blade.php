@@ -22,8 +22,6 @@
 
     <br>
 
-
-
     @foreach ($dishes as $dish)
 
     <ul class="list-group col-md-4">
@@ -43,13 +41,13 @@
       <li class="list-group-item clearfix">
         <a
           href="{{route('dishes-edit', $dish->id)}}"
-          class="btn btn-primary pull-left">
+          class="btn btn-primary pull-left btn-s">
           Edit
        </a>
 
         <a
           href="{{ route('dishes-delete', $dish->id)}}"
-          class="btn pull-right btn-danger">
+          class="btn pull-right btn-danger btn-s">
           Delete
        </a>
 
@@ -62,7 +60,7 @@
            {{ csrf_field() }}
            <input type="hidden" name="dishes_id" value="{{$dish->id}}">
 
-             <button type="submit" name="button" class="btn btn-success btn-block js-cart">Add Cart</button>
+             <button type="submit" name="button" class="btn btn-success btn-block js-cart btn-s">Add Cart</button>
          </form>
        </li>
        @endif

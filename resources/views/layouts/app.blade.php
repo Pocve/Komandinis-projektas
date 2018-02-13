@@ -19,7 +19,7 @@
   <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 </head>
 <body>
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top" style="margin:0;">
             <div class="container">
                 <div class="navbar-header">
 
