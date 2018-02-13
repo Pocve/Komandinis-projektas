@@ -33,8 +33,9 @@
           <img src="{{ $dish->getUrlAttribute() }}" alt="" class="img-responsive">
         </a>
       </li>
-      <li class="list-group-item">{{$dish['description']}}</li>
+      <li class="list-group-item">{!!$dish['description']!!}</li>
       <li class="list-group-item">Price: {{$dish['price']}}$</li>
+
 
 
       @if (Auth::check())

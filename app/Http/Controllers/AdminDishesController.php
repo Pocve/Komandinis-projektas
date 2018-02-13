@@ -50,7 +50,7 @@ class AdminDishesController extends Controller
     {
       $session = $request->session();
       $status = $session->flash('status', 'You created a new dish');
-      
+
       $validatedData = $request->validate([
         'file_name'=>'required',
         'title'=>'required|min:2',
@@ -125,7 +125,7 @@ class AdminDishesController extends Controller
       ];
       $dish = Dish::findOrFail($id);
       $dish->update($post);
-      return redirect()->to('dishes-admin');
+      return redirect()->to('dishes');
     }
 
     /**

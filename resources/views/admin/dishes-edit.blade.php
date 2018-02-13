@@ -33,11 +33,12 @@ Back
                   <div class="form-group">
                       <label for="description" class="col-md-4 control-label">Description</label>
                       <div class="col-md-6">
-                          <input id="description" type="text" class="form-control" name="description" value="{{old('description', $dishes->description)}}">
+
+                          <textarea rows="8" cols="80" id="description" type="text" class="form-control ckeditor" name="description">{{old('description', $dishes->description)}} </textarea>
                           @if ($errors->has('description'))
                             <span style="color:blue;">{{$errors->first('description')}}</span><br>
                           @endif
-                                                      </div>
+                        </div>
                   </div>
 
                   <div class="form-group">

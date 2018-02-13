@@ -16,6 +16,7 @@
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
+  <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 </head>
 <body>
         <nav class="navbar navbar-default navbar-static-top">
@@ -106,6 +107,17 @@
         @yield('content')
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}">
+
+          ClassicEditor
+            .create( document.querySelector( '#description' ) )
+            .then( description => {
+              console.log( description );
+            } )
+            .catch( smdlksld => {
+              console.error( smdlksld );
+            } );
+
+    </script>
 </body>
 </html>
