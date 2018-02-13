@@ -62,8 +62,6 @@
            <input type="hidden" name="dishes_id" value="{{$dish->id}}">
 
              <button type="submit" name="button" class="btn btn-success btn-block js-cart">Add Cart</button>
-           @else
-
          </form>
        </li>
        @endif
@@ -105,7 +103,7 @@ $(document).ready(function(){
       },
       error: function(msg){
                   console.log(msg.responseText);
-                  $('html').prepend(msg.responseText);
+                  // $('html').prepend(msg.responseText);
               }
     })
 
