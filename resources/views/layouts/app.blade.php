@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{$title}}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -19,7 +19,7 @@
   <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 </head>
 <body>
-        <nav class="navbar navbar-default navbar-static-top" style="margin:0;">
+        <nav class="navbar navbar-default navbar-fixed-top betmanas" style="margin:0;">
             <div class="container">
                 <div class="navbar-header">
 
@@ -100,7 +100,7 @@
             </div>
         </nav>
         @if (session('status'))
-            <div class="alert alert-success">
+            <div class="alert alert-success" style="margin-top: 50px;">
                 {{ session('status') }}
             </div>
         @endif

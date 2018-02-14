@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+  'title'=>'Create dishes'
+])
 @section('content')
   <div class="container">
 <div class="row">

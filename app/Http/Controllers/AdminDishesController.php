@@ -16,7 +16,7 @@ class AdminDishesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
         $dishes = Dish::paginate(6);
@@ -48,15 +48,18 @@ class AdminDishesController extends Controller
      */
     public function store(Request $request)
     {
+
+
+      $this->validateData($request);
+
       $session = $request->session();
       $status = $session->flash('status', 'You created a new dish');
-
-      $validatedData = $request->validate([
-        'file_name'=>'required',
-        'title'=>'required|min:2',
-        'description'=>'required|min:10',
-        'price'=>'required|numeric'
-      ]);
+      // $validatedData = $request->validate([
+      //   'file_name'=>'required',
+      //   'title'=>'required|min:2',
+      //   'description'=>'required|min:10',
+      //   'price'=>'required|numeric'
+      // ]);
 
         $path = $request->file('file_name')->storePublicly('public/photos');
         $post = [
@@ -107,23 +110,30 @@ class AdminDishesController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $validatedData = $request->validate([
-        'file_name'=>'required',
-        'title'=>'required|min:2',
-        'description'=>'required|min:10',
-        'price'=>'required|numeric'
-      ]);
+      // $this->validateData($request);
+
+      // $validatedData = $request->validate([
+      //   'file_name'=>'required',
+      //   'title'=>'required|min:2',
+      //   'description'=>'required|min:10',
+      //   'price'=>'required|numeric'
+      // ]);
 
 
 
-      $path = $request->file('file_name')->storePublicly('public/photos');
+
       $post = [
-        'file_name'=> $path,
         'title'=>$request['title'],
         'description'=>$request['description'],
         'price'=>$request['price']
       ];
-      $dish = Dish::findOrFail($id);
+        $dish = Dish::findOrFail($id);
+      if ($request->hasFile('file_name')){
+        $path = $request->file('file_name')->storePublicly('public/photos');
+        $post['file_name'] = $path;
+      }
+
+
       $dish->update($post);
       return redirect()->to('dishes');
     }
@@ -141,4 +151,15 @@ class AdminDishesController extends Controller
       Storage::disk('local')->delete($dish['file_name']);
       return redirect()->to('dishes');
     }
+
+    private function validateData(Request $request)
+    {
+      $validatedData = $request->validate([
+        'file_name'=>'required',
+        'title'=>'required|min:2',
+        'description'=>'required|min:10',
+        'price'=>'required|numeric'
+      ]);
+    }
+
 }

@@ -1,6 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+  'title'=>'Edit reservation'
+])
 
 @section('content')
+
 
   <div class="container">
     <div class="row">

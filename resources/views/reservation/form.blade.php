@@ -1,5 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+  'title'=>'Create reservation'
+])
 @section('content')
+
   <div class="container">
     <div class="row">
       <a href="{{ route('reservations-index')}}"

@@ -44,6 +44,8 @@ class OrderController extends Controller
     public function store(Request $request)
     {
 
+      $session = $request->session();
+      $status = $session->flash('status', 'You have successfully placed an order');
       $this->user = Auth::user();
       $tax_amount = new CartHelper;
       $tax_amount = $tax_amount -> vatTotal();

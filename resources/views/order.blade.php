@@ -1,7 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+  'title'=>'Orders list'
+])
 @section('content')
 
-  <div class="container">
+  <div class="container" style="margin-top:50px">
     {{-- @foreach ($orders as $order) --}}
     <h1>Orders ({{ count($orders) }})</h1>
     {{-- @endforeach --}}

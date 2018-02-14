@@ -1,9 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+  'title'=>'List of reservations'
+])
 
 @section('content')
 
-
-  <div class="container">
+  <div class="container" style="margin-top:50px">
     <div class="row">
               <h1>Reservations ({{count($reservations)}})</h1>
       <hr>

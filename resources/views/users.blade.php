@@ -1,9 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+  'title'=>'Registration list'
+])
 
 @section('content')
 
 
-  <div class="container">
+  <div class="container" style="margin-top:50px">
     {{-- @foreach ($orders as $order) --}}
     <h1>Users ({{ count($users) }})</h1>
     {{-- @endforeach --}}

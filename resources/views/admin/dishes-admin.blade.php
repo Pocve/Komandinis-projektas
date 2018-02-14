@@ -1,6 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+  'title'=>'Dishes'
+])
 @section('content')
-<div class="container">
+
+
+<div class="container" style="margin-top: 50px;">
   <div class="row">
       <div class="col-md-12" style="padding-left:0;">
   <h2 class="text-center alert alert-info alert-dismissable fade in">Dish total: ({{$dishes->total()}})</h2>
@@ -68,7 +72,7 @@
 
     @endforeach
 
-    <center>{{$dishes->links()}}</center>
+    <center class="col-md-12">{{$dishes->links()}}</center>
 
 </div>
 <script type="text/javascript">

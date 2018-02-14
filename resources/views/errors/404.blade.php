@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+  'title'=>'Wrong page'
+])
 
 @section('content')
-
-
 
       <div class="panel panel-default"  style=" background-color: black;">
         <div class="panel-body text-center">

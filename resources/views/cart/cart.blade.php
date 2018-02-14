@@ -1,9 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+  'title'=>'Cart'
+])
 @section('content')
+
+
   <div class="container">
 
 
-    <div class="row">
+    <div class="row" style="margin-top: 30px;">
       <h1>
         Cart ({{ $cartSize }})
       </h1>
@@ -58,7 +62,7 @@
 
 
       <form class="form-horizontal" method="POST" action="{{route('order-cart')}}">
-        
+
         {{-- {{dd($value->dishes_id)}} --}}
         {{csrf_field()}}
         <button class="btn btn-lg btn-success btn-block">
