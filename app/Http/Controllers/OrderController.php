@@ -6,6 +6,7 @@ use App\Order;
 use App\Dish;
 use App\Cart;
 Use App\User;
+use WebToPay;
 use Illuminate\Http\Request;
 use App\Helpers\CartHelper;
 
@@ -44,6 +45,8 @@ class OrderController extends Controller
     public function store(Request $request)
     {
 
+
+
       $session = $request->session();
       $status = $session->flash('status', 'You have successfully placed an order');
       $this->user = Auth::user();
@@ -65,9 +68,23 @@ class OrderController extends Controller
         $cart->order_id = $order->id;
         $cart->save();
       }
+      try {
 
-
-      return redirect()->route('dishes-admin');
+        $request = WebToPay::redirectToPayment(array(
+            'projectid'     => env('PAYSERA_ID'),
+            'sign_password' => env('PAYSERA_PW'),
+            'orderid'       => $order->id,
+            'amount'        => $getTotal*100,
+            'currency'      => 'EUR',
+            'country'       => 'LT',
+            'accepturl'     => route('accept'),
+            'cancelurl'     => route('cancel'),
+            'callbackurl'   => route('callback'),
+            'test'          => 1,
+        ));
+      } catch (WebToPayException $e) {
+        // handle exception
+        }
     }
 
     /**

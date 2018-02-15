@@ -46,3 +46,7 @@ Route::post('/store-reservation', 'ReservationController@store')->name('store-re
 Route::get('/edit-reservation/{id}', 'ReservationController@edit')->name('edit-reservations');
 Route::post('/update-reservation/{id}', 'ReservationController@update')->name('update-reservations');
 Route::delete('/destroy-reservation/{id}', 'ReservationController@destroy')->name('destroy-reservations')->middleware('IsAdmin');
+
+Route::get('/accept', 'PayseraController@accept')->name('accept');
+Route::get('/cancel', 'PayseraController@cancel')->name('cancel');
+Route::get('/callback', 'PayseraController@callback')->name('callback');
