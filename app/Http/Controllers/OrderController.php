@@ -63,17 +63,19 @@ class OrderController extends Controller
       ];
 
       $dishes = Cart::where('token', csrf_token())->whereNull('order_id')->get();
-      $order = Order::create($post);
-      foreach ($dishes as $cart) {
-        $cart->order_id = $order->id;
-        $cart->save();
-      }
+
+
 
     if (count($dishes) ==  0) {
       // dump(count($order));
       return redirect()->to('dishes');
     }
     else {
+      $order = Order::create($post);
+      foreach ($dishes as $cart) {
+        $cart->order_id = $order->id;
+        $cart->save();
+      }
       try {
       $request = WebToPay::redirectToPayment(array(
           'projectid'     => env('PAYSERA_ID'),
