@@ -47,8 +47,8 @@ class OrderController extends Controller
 
 
 
-      $session = $request->session();
-      $status = $session->flash('status', 'You have successfully placed an order');
+      // $session = $request->session();
+      // $status = $session->flash('status', 'You have successfully placed an order');
       $this->user = Auth::user();
       $tax_amount = new CartHelper;
       $tax_amount = $tax_amount -> vatTotal();
@@ -68,24 +68,31 @@ class OrderController extends Controller
         $cart->order_id = $order->id;
         $cart->save();
       }
-      try {
 
-        $request = WebToPay::redirectToPayment(array(
-            'projectid'     => env('PAYSERA_ID'),
-            'sign_password' => env('PAYSERA_PW'),
-            'orderid'       => $order->id,
-            'amount'        => $getTotal*100,
-            'currency'      => 'EUR',
-            'country'       => 'LT',
-            'accepturl'     => route('accept'),
-            'cancelurl'     => route('cancel'),
-            'callbackurl'   => route('callback'),
-            'test'          => 1,
-        ));
-      } catch (WebToPayException $e) {
-        // handle exception
-        }
+    if (count($dishes) ==  0) {
+      // dump(count($order));
+      return redirect()->to('dishes');
     }
+    else {
+      try {
+      $request = WebToPay::redirectToPayment(array(
+          'projectid'     => env('PAYSERA_ID'),
+          'sign_password' => env('PAYSERA_PW'),
+          'orderid'       => $order->id,
+          'amount'        => $getTotal*100,
+          'currency'      => 'EUR',
+          'country'       => 'LT',
+          'accepturl'     => route('accept'),
+          'cancelurl'     => route('cancel'),
+          'callbackurl'   => route('callback'),
+          'test'          => 1,
+      ));
+    } catch (WebToPayException $e) {
+      // handle exception
+      }
+    }
+}
+
 
     /**
      * Display the specified resource.
